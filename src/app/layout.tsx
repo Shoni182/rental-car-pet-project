@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { Inter, Manrope } from 'next/font/google';
-import TanStackProvider from '@/components/TanStackProvider/TanStackProvider';
+import TanStackProvider from '@/src/components/TanStackProvider/TanStackProvider';
 import './globals.css';
 
 const manrope = Manrope({
