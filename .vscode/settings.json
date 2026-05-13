@@ -1,0 +1,14 @@
+{
+  "files.exclude": {
+    // ".env": true,
+    // ".gitignore": true,
+    ".prettierrc": true,
+    "eslint.config.mjs": true,
+    "next-env.d.ts": true,
+    "next.config.ts": true,
+    "package-lock.json": true,
+    "README.md": true,
+    "tsconfig.json": true,
+    "package.json": true
+  }
+}
