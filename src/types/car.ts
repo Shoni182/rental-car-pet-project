@@ -1,3 +1,4 @@
+//: Car
 export type Car = {
   id: string;
   year: number;
@@ -17,7 +18,7 @@ export type Car = {
   mileage: number;
 };
 
-// Filter
+//: Filter
 export type FilterTypes = {
   brands: string[];
   price: {
@@ -26,7 +27,7 @@ export type FilterTypes = {
   };
 };
 
-// Response
+//: Response
 export type CarResponse = {
   cars: Car[];
   totalCars: number;
@@ -34,13 +35,13 @@ export type CarResponse = {
   totalPages: number;
 };
 
-// Form
+//: Form
 export type RentalFormData = {
   name: string;
   email: string;
   comment: string;
 };
-// Form Response
+//: Form Response
 export type BookingResponse = {
   message: string;
 };
