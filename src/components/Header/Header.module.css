@@ -1,7 +1,6 @@
 .header {
     background: var(--white);
     border-bottom: 1px solid var(--badges);
-
 }
 
 .headerContainer {
@@ -32,7 +31,6 @@
 
 .navLink:hover {
     color: var(--dark-blue);
-
 }
 
 
