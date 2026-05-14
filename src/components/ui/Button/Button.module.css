@@ -1,9 +1,8 @@
-.button {
+.primaryButton {
     border: none;
     border-radius: 12px;
-    padding: 12px 99px;
-    height: 44px;
     background: var(--light-blue);
+    display: block;
 
     font-family: var(--font-family);
     font-weight: 600;
@@ -12,7 +11,19 @@
     color: var(--white);
 }
 
-.button:hover,
-.button:focus {
+.primaryButton:hover,
+.primaryButton:focus {
     background: var(--dark-blue);
+}
+
+
+.secondaryButton {
+    border: 1px solid var(--light-blue);
+    border-radius: 12px;
+
+    font-family: var(--font-family);
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 125%;
+    color: var(--main);
 }
