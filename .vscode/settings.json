@@ -8,7 +8,7 @@
     "next.config.ts": true,
     "package-lock.json": true,
     "README.md": true,
-    "tsconfig.json": true,
-    "package.json": true
+    "tsconfig.json": true
+    // "package.json": true
   }
 }
