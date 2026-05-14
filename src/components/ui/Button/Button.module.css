@@ -1,0 +1,18 @@
+.button {
+    border: none;
+    border-radius: 12px;
+    padding: 12px 99px;
+    height: 44px;
+    background: var(--light-blue);
+
+    font-family: var(--font-family);
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 125%;
+    color: var(--white);
+}
+
+.button:hover,
+.button:focus {
+    background: var(--dark-blue);
+}
