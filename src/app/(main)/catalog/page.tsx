@@ -2,7 +2,8 @@
 import CarCard from '@/components/CarCard/CarCard';
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { fetchCars } from '@/lib/api';
-// import { CarResponse } from '@/types/car';
+import css from './page.module.css';
+import Button from '@/components/ui/Button/Button';
 
 import React from 'react';
 
@@ -31,34 +32,34 @@ function Catalog() {
   ) : status === 'error' ? (
     <p>Error: {error.message}</p>
   ) : (
-    <>
-      {data.pages.map((catalog, i) => (
-        <React.Fragment key={i}>
-          {catalog.data.map((cars) => (
-            <CarCard
-              key={cars.id}
-              brand={cars.brand}
-              id={cars.id}
-              img={cars.img}
-              model={cars.model}
-              year={cars.year}
-              rentalPrice={cars.rentalPrice}
-              location={{
-                country: cars.location.country,
-                city: cars.location.city,
-                address: cars.location.address,
-              }}
-              rentalCompany={cars.rentalCompany}
-              type={cars.type}
-              mileage={cars.mileage}
-            />
-          ))}
-        </React.Fragment>
-      ))}
-      <div>
+    <section>
+      <div className={css.catalogContainer}>
+        {data.pages.map((catalog, i) => (
+          <React.Fragment key={i}>
+            {(catalog.cars ?? []).map((cars) => (
+              <CarCard
+                key={cars.id}
+                brand={cars.brand}
+                id={cars.id}
+                img={cars.img}
+                model={cars.model}
+                year={cars.year}
+                rentalPrice={cars.rentalPrice}
+                location={
+                  cars.location ?? { country: '', city: '', address: '' }
+                }
+                rentalCompany={cars.rentalCompany}
+                type={cars.type}
+                mileage={cars.mileage}
+              />
+            ))}
+          </React.Fragment>
+        ))}
+
         <button
           onClick={() => fetchNextPage()}
           disabled={!hasNextPage || isFetching}
+          className={css.secondaryButton}
         >
           {isFetchingNextPage
             ? 'Loading more...'
@@ -66,9 +67,10 @@ function Catalog() {
               ? 'LoadMore'
               : 'Noting more to load'}
         </button>
+
+        <div>{isFetching && !isFetchingNextPage ? 'Fetching...' : null}</div>
       </div>
-      <div>{isFetching && !isFetchingNextPage ? 'Fetching...' : null}</div>
-    </>
+    </section>
   );
 }
 

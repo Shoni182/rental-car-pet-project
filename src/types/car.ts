@@ -32,7 +32,7 @@ export type FilterTypes = {
 
 //: Response
 export type CarResponse = {
-  data: Car[];
+  cars: Car[];
   totalCars: number;
   page: number;
   totalPages: number;

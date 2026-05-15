@@ -1,0 +1,36 @@
+.catalogContainer {
+    padding: 60px 120px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 42px 32px;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.secondaryButton {
+    border: 1px solid var(--light-blue);
+    border-radius: 12px;
+    text-align: center;
+    background-color: transparent;
+
+
+    height: 44px;
+
+
+
+    padding: 12px 51px;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 125%;
+    color: var(--main);
+}
+
+
+.secondaryButton:hover,
+.secondaryButton:focus {
+    border: 1px solid var(--dark-blue);
+    border-radius: 12px;
+
+}
