@@ -3,13 +3,13 @@
     border-radius: 12px;
     background: var(--light-blue);
     display: block;
+    text-align: center;
 
     font-weight: 600;
     font-size: 16px;
     line-height: 125%;
     color: var(--white);
 
-    margin: 0 auto;
 }
 
 .primaryButton:hover,
@@ -21,6 +21,7 @@
 .secondaryButton {
     border: 1px solid var(--light-blue);
     border-radius: 12px;
+    text-align: center;
 
     font-weight: 600;
     font-size: 16px;
