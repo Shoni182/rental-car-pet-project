@@ -3,7 +3,8 @@ import CarCard from '@/components/CarCard/CarCard';
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { fetchCars } from '@/lib/api';
 import css from './page.module.css';
-import Button from '@/components/ui/Button/Button';
+
+// import Button from '@/components/ui/Button/Button';
 
 import React from 'react';
 
@@ -21,9 +22,8 @@ function Catalog() {
     queryFn: ({ pageParam }) => fetchCars({ page: pageParam }),
     initialPageParam: 1,
     getNextPageParam: (lastPage) => {
-      return lastPage.totalPages > lastPage.page
-        ? lastPage.page + 1
-        : undefined;
+      const currentPage = Number(lastPage.page);
+      return lastPage.totalPages > currentPage ? currentPage + 1 : undefined;
     },
   });
 
