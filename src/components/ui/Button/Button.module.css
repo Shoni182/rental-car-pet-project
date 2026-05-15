@@ -4,7 +4,6 @@
     background: var(--light-blue);
     display: block;
 
-    font-family: var(--font-family);
     font-weight: 600;
     font-size: 16px;
     line-height: 125%;
@@ -23,9 +22,16 @@
     border: 1px solid var(--light-blue);
     border-radius: 12px;
 
-    font-family: var(--font-family);
     font-weight: 600;
     font-size: 16px;
     line-height: 125%;
     color: var(--main);
+}
+
+
+.secondaryButton:hover,
+.secondaryButton:focus {
+    border: 1px solid var(--dark-blue);
+    border-radius: 12px;
+
 }

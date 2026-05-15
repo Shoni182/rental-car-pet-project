@@ -10,7 +10,7 @@ export default function HomePage() {
           Reliable and budget-friendly rentals for any journey
         </h2>
         <Button
-          href="/catalog"
+          path="/catalog"
           text="View Catalog"
           padding={[12, 99]}
           buttonVariant="primaryButton"
