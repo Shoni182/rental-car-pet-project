@@ -9,6 +9,8 @@
     font-size: 16px;
     line-height: 125%;
     color: var(--white);
+
+    margin: 0 auto;
 }
 
 .primaryButton:hover,
