@@ -9,6 +9,7 @@ export const fetchCars = async ({
   price,
   minMileage,
   maxMileage,
+  page,
 }: {
   brand?: string;
   price?: number;
@@ -22,6 +23,7 @@ export const fetchCars = async ({
       price: price ?? undefined,
       minMileage: minMileage ?? undefined,
       maxMileage: maxMileage ?? undefined,
+      page: page ?? 1,
     },
   });
   return res.data;
