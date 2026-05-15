@@ -60,7 +60,7 @@ export default function CarCard({
       <Button
         path={`/catalog/${id}`}
         text="Read more"
-        padding={[12, 99]}
+        padding={[12, 0]}
         buttonVariant="primaryButton"
       />
     </div>
