@@ -1,0 +1,70 @@
+.carContainer {
+    border-radius: 16px;
+    padding: 16px;
+    width: 276px;
+    /* height: 464px; */
+
+    background: var(--white);
+}
+
+.titleContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 125%;
+    color: var(--main);
+    margin-bottom: 8px;
+}
+
+.image {
+    border-radius: 14px;
+    object-fit: cover;
+    margin-bottom: 16px;
+}
+
+.title {}
+
+
+.model {
+    color: var(--light-blue);
+}
+
+.price {}
+
+.detailsContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    border-radius: 8px;
+    padding: 8px;
+    width: 244px;
+    height: 52px;
+    background: var(--bg);
+
+    margin-bottom: 28px;
+}
+
+.carDetails {
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 133%;
+    color: var(--main);
+}
+
+.carDetails:not(:last-child)::after {
+    content: "";
+    width: 1px;
+    height: 16px;
+    margin-left: 8px;
+    margin-right: 8px;
+    background-color: var(--gray-light);
+    ;
+    display: inline-block;
+    vertical-align: middle;
+
+}
