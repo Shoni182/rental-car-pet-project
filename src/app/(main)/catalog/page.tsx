@@ -1,7 +1,5 @@
+import CarCard from '@/components/CarCard/CarCard';
+
 export default function Catalog() {
-  return (
-    <div>
-      <h1>Catalog</h1>
-    </div>
-  );
+  return <div></div>;
 }
