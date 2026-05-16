@@ -2,6 +2,7 @@ import css from './Button.module.css';
 import Link from 'next/link';
 
 interface ButtonProps {
+  target: boolean;
   path: string;
   text: string;
   padding: number[];
@@ -9,6 +10,7 @@ interface ButtonProps {
 }
 
 export default function Button({
+  target = false,
   path,
   text,
   padding = [],
@@ -21,6 +23,7 @@ export default function Button({
     <Link
       href={path}
       type="button"
+      target={target ? '_blank' : ''}
       className={style}
       style={{ padding: paddingStyle }}
     >

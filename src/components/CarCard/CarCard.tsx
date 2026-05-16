@@ -60,6 +60,7 @@ export default function CarCard({
       <Button
         path={`/catalog/${id}`}
         text="Read more"
+        target={true}
         padding={[12, 0]}
         buttonVariant="primaryButton"
       />
