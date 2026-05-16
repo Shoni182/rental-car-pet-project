@@ -3,6 +3,7 @@ import CarCard from '@/components/CarCard/CarCard';
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { fetchCars } from '@/lib/api';
 import css from './page.module.css';
+import type { Metadata } from 'next';
 
 // import Button from '@/components/ui/Button/Button';
 
@@ -56,17 +57,15 @@ function Catalog() {
           </React.Fragment>
         ))}
 
-        <button
-          onClick={() => fetchNextPage()}
-          disabled={!hasNextPage || isFetching}
-          className={css.secondaryButton}
-        >
-          {isFetchingNextPage
-            ? 'Loading more...'
-            : hasNextPage
-              ? 'LoadMore'
-              : 'Noting more to load'}
-        </button>
+        {hasNextPage && (
+          <button
+            onClick={() => fetchNextPage()}
+            disabled={!hasNextPage || isFetching}
+            className={css.secondaryButton}
+          >
+            {isFetchingNextPage ? 'Loading more...' : 'Load More'}
+          </button>
+        )}
 
         <div>{isFetching && !isFetchingNextPage ? 'Fetching...' : null}</div>
       </div>
