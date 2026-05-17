@@ -4,21 +4,44 @@ import { CarFilter, FilterTypes } from '@/types/car';
 import { useState, useEffect, useRef } from 'react';
 import { fetchFilters } from '@/lib/api';
 
+// import Image from 'next/image';
+
 interface FilterProps {
   onFilter: (filters: CarFilter) => void;
 }
 
+function buildPriceOptions(min: number, max: number) {
+  const arr: number[] = [];
+  for (let i = min; i <= max; i += 10) arr.push(i);
+  return arr;
+}
+
 export default function Filters({ onFilter }: FilterProps) {
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  // Dropdown of the option list
+  const [isBrandDropdownOpen, setIsBrandDropdownOpen] = useState(false);
+  const [isPriceDropdownOpen, setIsPriceDropdownOpen] = useState(false);
+  const brandsDropDownRef = useRef<HTMLDivElement>(null);
+  const pricesDropDownRef = useRef<HTMLDivElement>(null);
+
+  // All inpue data
   const [filterOptions, setFilterOptions] = useState<FilterTypes | null>(null);
+  // Selected options
+  const [selectedBrand, setSelectedBrand] = useState<string[]>([]);
+  const [selectedPrice, setSelectedPrice] = useState<number[]>([]);
+  // Entered maliage
+  const [minMaliage, setMinMaliage] = useState<number | ''>('');
+  const [maxMaliage, setMaxMaliage] = useState<number | ''>('');
 
-  const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
-  const [selectedPrice, setSelectedPrice] = useState<{
-    min: number;
-    max: number;
-  } | null>(null);
+  const priceOptions = filterOptions?.price
+    ? buildPriceOptions(filterOptions.price.min, filterOptions.price.max)
+    : [];
 
-  const dropDownRef = useRef<HTMLDivElement>(null);
+  function handleReset() {
+    setSelectedBrand([]);
+    setSelectedPrice([]);
+    setMinMaliage('');
+    setMaxMaliage('');
+  }
 
   //: Дістаємо значення фільтру
 
@@ -40,13 +63,14 @@ export default function Filters({ onFilter }: FilterProps) {
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
-      if (
-        dropDownRef.current &&
-        !dropDownRef.current.contains(e.target as Node)
-      ) {
-        setIsDropdownOpen(false);
+      if (!brandsDropDownRef.current?.contains(e.target as Node)) {
+        setIsBrandDropdownOpen(false);
+      }
+      if (!pricesDropDownRef.current?.contains(e.target as Node)) {
+        setIsPriceDropdownOpen(false);
       }
     };
+
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
@@ -57,37 +81,39 @@ export default function Filters({ onFilter }: FilterProps) {
       {/* Brands */}
       <div className={css.selectContainter}>
         <p className={css.title}>Car brand</p>
-        <div className={css.dropdownWrapper} ref={dropDownRef}>
+        <div className={css.dropdownWrapper} ref={brandsDropDownRef}>
           <div
             className={css.dropdownTrigger}
-            onClick={() => setIsDropdownOpen((prev) => !prev)}
+            onClick={() => setIsBrandDropdownOpen((prev) => !prev)}
           >
             <div className={css.selectedOptions}>
-              {selectedBrands.length === 0 ? (
+              {selectedBrand.length === 0 ? (
                 <span className={css.placeholder}>Choose a brand </span>
               ) : (
-                selectedBrands.map((brand) => (
+                selectedBrand.map((brand) => (
                   <span key={brand} className={css.selectedOption}>
                     {brand}
                   </span>
                 ))
               )}
             </div>
-            <span
-              className={`${css.chevron} ${isDropdownOpen ? css.chevronOpen : ''}`}
+            <svg
+              className={`${css.chevron} ${isBrandDropdownOpen ? css.chevronOpen : ''}`}
+              width={13}
+              height={13}
             >
-              ▾
-            </span>
+              <use href="/sprites.svg#icon-chevron-down"></use>
+            </svg>
           </div>
 
           {/* Dropdown list */}
-          {isDropdownOpen && (
+          {isBrandDropdownOpen && (
             <div className={css.dropdownList}>
               {filterOptions?.brands.map((brand) => (
                 <div
                   key={brand}
-                  onClick={() => setSelectedBrands([brand])}
-                  className={`${css.dropdownItem} ${selectedBrands.includes(brand) ? css.dropdownItemActive : ''}`}
+                  onClick={() => setSelectedBrand([brand])}
+                  className={`${css.dropdownItem} ${selectedBrand.includes(brand) ? css.dropdownItemActive : ''}`}
                 >
                   {brand}
                 </div>
@@ -96,6 +122,102 @@ export default function Filters({ onFilter }: FilterProps) {
           )}
         </div>
       </div>
+
+      {/* Prices */}
+      <div className={css.selectContainter}>
+        <p className={css.title}>Price/1hour</p>
+        <div className={css.dropdownWrapper} ref={pricesDropDownRef}>
+          <div
+            className={css.dropdownTrigger}
+            onClick={() => setIsPriceDropdownOpen((prev) => !prev)}
+          >
+            <div className={css.selectedOptions}>
+              {selectedPrice.length === 0 ? (
+                <span className={css.placeholder}>Choose a price </span>
+              ) : (
+                selectedPrice.map((price) => (
+                  <span key={price} className={css.selectedOption}>
+                    {price}
+                  </span>
+                ))
+              )}
+            </div>
+            <svg
+              className={`${css.chevron} ${isPriceDropdownOpen ? css.chevronOpen : ''}`}
+              width={13}
+              height={13}
+            >
+              <use href="/sprites.svg#icon-chevron-down"></use>
+            </svg>
+          </div>
+
+          {/* Dropdown list */}
+          {isPriceDropdownOpen && (
+            <div className={css.dropdownList}>
+              {priceOptions?.map((price) => (
+                <div
+                  key={price}
+                  onClick={() => setSelectedPrice([price])}
+                  className={`${css.dropdownItem} ${selectedPrice.includes(price) ? css.dropdownItemActive : ''}`}
+                >
+                  {price}
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* Inputs */}
+      <div>
+        <p className={css.title}>Car mileage /km</p>
+        <div className={css.inputContainer}>
+          <input
+            type="number"
+            inputMode="numeric"
+            pattern="[0-9]*"
+            className={css.inputMin}
+            placeholder="From"
+            value={minMaliage}
+            onChange={(e) =>
+              setMinMaliage(e.target.value === '' ? '' : Number(e.target.value))
+            }
+            onKeyDown={(e) => {
+              if (['-', '+', 'e', 'E', '.', '='].includes(e.key)) {
+                e.preventDefault();
+              }
+            }}
+          />
+          {/* <ErrorMessage component="span" name="title" className={css.error} /> */}
+
+          <input
+            type="number"
+            inputMode="numeric"
+            pattern="[0-9]*"
+            className={css.inputMax}
+            placeholder="To"
+            value={maxMaliage}
+            onChange={(e) =>
+              setMaxMaliage(e.target.value === '' ? '' : Number(e.target.value))
+            }
+            onKeyDown={(e) => {
+              if (['-', '+', 'e', 'E', '.', '='].includes(e.key)) {
+                e.preventDefault();
+              }
+            }}
+          />
+        </div>
+      </div>
+
+      <div className={css.buttonsContainer}>
+        <button className={css.primaryButton}>Search</button>
+        <button className={css.secondaryButton} onClick={handleReset}>
+          Clear filters
+        </button>
+      </div>
     </div>
   );
 }
+
+// треба дістати мін та мах  а потім з додатком 10+ пройтись по списк
+// поки значення і більше мін і менше мах то рязувати дотам

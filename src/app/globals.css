@@ -51,6 +51,21 @@ ul {
   list-style-type: none;
 }
 
+input {
+  appearance: none;
+  -webkit-appearance: none;
+  border: none;
+  outline: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  appearance: none;
+}
 
 @media (prefers-color-scheme: dark) {
   html {

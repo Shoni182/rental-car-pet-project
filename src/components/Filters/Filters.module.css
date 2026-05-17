@@ -1,13 +1,16 @@
 .filterContainer {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    /* align-items: center; */
+    justify-content: center;
     gap: 16px;
     margin: 0 auto;
-    height: 68px;
+    height: 96px;
     width: 752px;
     margin-top: 84px;
     margin-bottom: 60px;
+
+
 }
 
 .title {
@@ -74,10 +77,9 @@
 }
 
 .dropdownList {
-
     border-radius: 12px;
     width: 204px;
-    height: 272px;
+
 
     box-shadow: 0 4px 36px 0 rgba(0, 0, 0, 0.02);
     background: var(--white);
@@ -103,13 +105,103 @@
 
     max-height: 240px;
     overflow-y: auto;
+}
 
+.chevron {
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+}
+
+.chevronOpen {
+    transform: rotate(180deg);
+}
+
+
+
+.inputContainer {
+    display: flex;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 125%;
+    color: var(--main);
+}
+
+.inputMin {
+    display: flex;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 125%;
+    color: var(--main);
+
+    border-right: 1px solid var(--gray-light);
+    border-radius: 12px 0 0 12px;
+    width: 160px;
+    height: 44px;
+    background: var(--white);
+
+    padding: 12px 6px 12px 24px;
+}
+
+.inputMax {
+    appearance: none;
+    display: flex;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 125%;
+    color: var(--main);
+    /* border-right: 1px solid var(--gray-light); */
+    border-radius: 0 12px 12px 0;
+    width: 160px;
+    height: 44px;
+    background: var(--white);
+
+    padding: 12px 6px 12px 24px;
+}
+
+
+.primaryButton {
+    cursor: pointer;
+    border: none;
+    border-radius: 12px;
+    background: var(--light-blue);
+    display: block;
+    text-align: center;
+
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 125%;
+    color: var(--white);
+
+    padding: 12px 51px;
+    margin-bottom: 8px;
 
 }
 
-.chevron {}
+.primaryButton:hover,
+.primaryButton:focus {
+    background: var(--dark-blue);
+}
 
-.chevronOpen {}
+.secondaryButton {
+    cursor: pointer;
+    width: 156px;
+    height: 20px;
+    border: none;
+    background-color: transparent;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 125%;
+    color: var(--gray);
 
-/* Для стану, коли шеврон відкритий */
-.chevron.chevronOpen {}
+}
+
+.secondaryButton:hover,
+.secondaryButton:focus {
+    color: var(--main);
+}
+
+.buttonsContainer {
+
+
+    margin-top: 24px;
+}
