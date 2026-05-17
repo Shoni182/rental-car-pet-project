@@ -67,7 +67,7 @@ export default function Filters({ onFilter }: FilterProps) {
                 <span className={css.placeholder}>Choose a brand </span>
               ) : (
                 selectedBrands.map((brand) => (
-                  <span key={brand} className={css.option}>
+                  <span key={brand} className={css.selectedOption}>
                     {brand}
                   </span>
                 ))
@@ -84,22 +84,13 @@ export default function Filters({ onFilter }: FilterProps) {
           {isDropdownOpen && (
             <div className={css.dropdownList}>
               {filterOptions?.brands.map((brand) => (
-                <label key={brand}>
-                  <input
-                    type="checkbox"
-                    checked={selectedBrands.includes(brand)}
-                    onChange={(e) => {
-                      if (e.target.checked) {
-                        setSelectedBrands((prev) => [...prev, brand]);
-                      } else {
-                        setSelectedBrands((prev) =>
-                          prev.filter((b) => b !== brand),
-                        );
-                      }
-                    }}
-                  />
+                <div
+                  key={brand}
+                  onClick={() => setSelectedBrands([brand])}
+                  className={`${css.dropdownItem} ${selectedBrands.includes(brand) ? css.dropdownItemActive : ''}`}
+                >
                   {brand}
-                </label>
+                </div>
               ))}
             </div>
           )}
