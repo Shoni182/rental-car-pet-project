@@ -1,7 +1,7 @@
 import { CarResponse, Car, FilterTypes, RentalFormData } from '@/types/car';
 import axios from 'axios';
 
-axios.defaults.baseURL = 'https://car-rental-api.goit.global';
+axios.defaults.baseURL = 'https://car-rental-api.goit.study';
 
 // : GET all Cars
 export const fetchCars = async ({
