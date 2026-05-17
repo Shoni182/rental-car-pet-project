@@ -210,7 +210,19 @@ export default function Filters({ onFilter }: FilterProps) {
       </div>
 
       <div className={css.buttonsContainer}>
-        <button className={css.primaryButton}>Search</button>
+        <button
+          className={css.primaryButton}
+          onClick={() =>
+            onFilter({
+              brand: selectedBrand[0] ?? '',
+              price: selectedPrice[0] ?? '',
+              mileageFrom: String(minMaliage),
+              mileageTo: String(maxMaliage),
+            })
+          }
+        >
+          Search
+        </button>
         <button className={css.secondaryButton} onClick={handleReset}>
           Clear filters
         </button>

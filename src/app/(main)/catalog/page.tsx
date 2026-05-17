@@ -4,13 +4,42 @@ import { useInfiniteQuery } from '@tanstack/react-query';
 import { fetchCars } from '@/lib/api';
 import css from './page.module.css';
 import Filters from '@/components/Filters/Filters';
-import type { Metadata } from 'next';
+import { useRouter } from 'next/router';
+// import type { Metadata } from 'next';
 
 // import Button from '@/components/ui/Button/Button';
 
-import React from 'react';
+import React, { useState } from 'react';
+import { CarFilter } from '@/types/car';
+import { useSearchParams } from 'next/navigation';
 
 function Catalog() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  const [filters, setFilters] = useState<CarFilter>({
+    brand: '',
+    price: null,
+    mileageFrom: '',
+    mileageTo: '',
+  });
+
+  const handleFilter = (newFilters: CarFilter) => {
+    setFilters(newFilters);
+    const params = new URLSearchParams();
+    if (newFilters.brand) params.set('brand', newFilters.brand);
+    if (newFilters.price) params.set('price', String(newFilters.price));
+    if (newFilters.mileageFrom)
+      params.set('mileageFrom', newFilters.mileageFrom);
+    if (newFilters.mileageTo) params.set('mileageTo', newFilters.mileageTo);
+    router.push(`/catalog?${params.toString()}`);
+  };
+
+  const params = new URLSearchParams();
+  if (filters.brand) params.set('brand', filters.brand);
+  if (filters.price) params.set('price', String(filters.price));
+  router.push(`/catalog?${params.toString()}`);
+
   const {
     data,
     error,
@@ -20,8 +49,17 @@ function Catalog() {
     isFetchingNextPage,
     status,
   } = useInfiniteQuery({
-    queryKey: ['cars'],
-    queryFn: ({ pageParam }) => fetchCars({ page: pageParam }),
+    queryKey: ['cars', filters],
+    queryFn: ({ pageParam }) =>
+      fetchCars({
+        page: pageParam,
+        brand: filters.brand || undefined,
+        price: filters.price !== null ? Number(filters.price) : undefined,
+        minMileage: filters.mileageFrom
+          ? Number(filters.mileageFrom)
+          : undefined,
+        maxMileage: filters.mileageTo ? Number(filters.mileageTo) : undefined,
+      }),
     initialPageParam: 1,
     getNextPageParam: (lastPage) => {
       const currentPage = Number(lastPage.page);
@@ -35,7 +73,7 @@ function Catalog() {
     <p>Error: {error.message}</p>
   ) : (
     <section>
-      <Filters onFilter={() => {}} />
+      <Filters onFilter={handleFilter} />
 
       <div className={css.catalogContainer}>
         {data.pages.map((catalog, i) => (
@@ -60,6 +98,7 @@ function Catalog() {
           </React.Fragment>
         ))}
 
+        {/* Load More  */}
         {hasNextPage && (
           <button
             onClick={() => fetchNextPage()}
