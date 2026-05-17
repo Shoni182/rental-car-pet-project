@@ -1,0 +1,88 @@
+.filterContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+    margin: 0 auto;
+    height: 68px;
+    width: 752px;
+    margin-top: 84px;
+    margin-bottom: 60px;
+    background-color: azure;
+}
+
+.selectContainter {}
+
+.title {
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 133%;
+    color: var(--gray);
+    margin-bottom: 8px;
+}
+
+.dropdownWrapper {
+    position: relative;
+    width: 100%;
+
+}
+
+.dropdownTrigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-radius: 12px;
+    padding: 12px 16px;
+    width: 204px;
+    height: 44px;
+    background: var(--white);
+    cursor: pointer;
+}
+
+.dropdownTrigger:hover {
+    border-color: rgba(0, 0, 0, 0.12);
+}
+
+.selectedOptions {}
+
+.placeholder {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 125%;
+    color: var(--main);
+}
+
+.option {
+    display: inline-flex;
+    align-items: center;
+
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 125%;
+    color: var(--main);
+}
+
+/* .optRemove {} */
+
+.chevron {}
+
+.chevronOpen {}
+
+/* Для стану, коли шеврон відкритий */
+.chevron.chevronOpen {}
+
+.dropdownList {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    width: 100%;
+    background: var(--white);
+    border-radius: 12px;
+    padding: 8px 0;
+    z-index: 10;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    max-height: 240px;
+    overflow-y: auto;
+}

@@ -3,6 +3,7 @@ import CarCard from '@/components/CarCard/CarCard';
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { fetchCars } from '@/lib/api';
 import css from './page.module.css';
+import Filters from '@/components/Filters/Filters';
 import type { Metadata } from 'next';
 
 // import Button from '@/components/ui/Button/Button';
@@ -34,6 +35,8 @@ function Catalog() {
     <p>Error: {error.message}</p>
   ) : (
     <section>
+      <Filters onFilter={() => {}} />
+
       <div className={css.catalogContainer}>
         {data.pages.map((catalog, i) => (
           <React.Fragment key={i}>

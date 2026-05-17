@@ -30,6 +30,15 @@ export type FilterTypes = {
   };
 };
 
+//: CarFiters
+
+export type CarFilter = {
+  brand: string;
+  price: number | null;
+  mileageFrom: string;
+  mileageTo: string;
+};
+
 //: Response
 export type CarResponse = {
   cars: Car[];
