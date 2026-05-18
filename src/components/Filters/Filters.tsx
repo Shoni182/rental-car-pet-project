@@ -215,7 +215,7 @@ export default function Filters({ onFilter }: FilterProps) {
           onClick={() =>
             onFilter({
               brand: selectedBrand[0] ?? '',
-              price: selectedPrice[0] ?? '',
+              price: selectedPrice[0] ?? null,
               mileageFrom: String(minMaliage),
               mileageTo: String(maxMaliage),
             })

@@ -4,7 +4,7 @@ import { useInfiniteQuery } from '@tanstack/react-query';
 import { fetchCars } from '@/lib/api';
 import css from './page.module.css';
 import Filters from '@/components/Filters/Filters';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 // import type { Metadata } from 'next';
 
 // import Button from '@/components/ui/Button/Button';
@@ -18,10 +18,10 @@ function Catalog() {
   const searchParams = useSearchParams();
 
   const [filters, setFilters] = useState<CarFilter>({
-    brand: '',
-    price: null,
-    mileageFrom: '',
-    mileageTo: '',
+    brand: searchParams.get('brand') ?? '',
+    price: searchParams.get('price') ? Number(searchParams.get('price')) : null,
+    mileageFrom: searchParams.get('mileageFrom') ?? '',
+    mileageTo: searchParams.get('mileageTo') ?? '',
   });
 
   const handleFilter = (newFilters: CarFilter) => {
@@ -34,11 +34,6 @@ function Catalog() {
     if (newFilters.mileageTo) params.set('mileageTo', newFilters.mileageTo);
     router.push(`/catalog?${params.toString()}`);
   };
-
-  const params = new URLSearchParams();
-  if (filters.brand) params.set('brand', filters.brand);
-  if (filters.price) params.set('price', String(filters.price));
-  router.push(`/catalog?${params.toString()}`);
 
   const {
     data,
