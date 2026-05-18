@@ -30,7 +30,7 @@ export const fetchCars = async ({
 };
 
 // : Get one Car
-export const fetchCar = async (id: string) => {
+export const fetchCarById = async (id: string) => {
   const res = await axios.get<Car>(`/cars/${id}`);
   return res.data;
 };
