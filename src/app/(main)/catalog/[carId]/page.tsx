@@ -12,7 +12,7 @@ import type { Metadata } from 'next';
 
 // типізація
 type Props = {
-  params: Promise<{ id: string }>;
+  params: Promise<{ carId: string }>;
 };
 
 // metadata
@@ -20,13 +20,13 @@ type Props = {
 // server prefetch
 
 const CarPage = async ({ params }: Props) => {
-  const { id } = await params;
+  const { carId } = await params;
 
   const queryClient = new QueryClient();
 
   await queryClient.prefetchQuery({
-    queryKey: ['car', id],
-    queryFn: () => fetchCarById(id),
+    queryKey: ['car', carId],
+    queryFn: () => fetchCarById(carId),
   });
 
   return (
