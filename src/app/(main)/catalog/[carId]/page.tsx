@@ -10,14 +10,30 @@ import { fetchCarById } from '@/lib/api';
 
 import type { Metadata } from 'next';
 
+export const metadata: Metadata = {
+  title: 'Car Details | Rental Car',
+  description:
+    'View detailed information about your selected rental car and book it now.',
+  openGraph: {
+    title: 'Car Details | Rental Car',
+    description:
+      'View detailed information about your selected rental car and book it now.',
+    url: 'https://rental-car-pet-project.vercel.app',
+    images: [
+      {
+        url: '/images/og-image.jpg',
+        width: 640,
+        height: 640,
+        alt: 'Rental Car logo image',
+      },
+    ],
+  },
+};
+
 // типізація
 type Props = {
   params: Promise<{ carId: string }>;
 };
-
-// metadata
-
-// server prefetch
 
 const CarPage = async ({ params }: Props) => {
   const { carId } = await params;

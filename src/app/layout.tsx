@@ -22,7 +22,22 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: 'Rental Car',
-  description: 'Rent car website',
+  description:
+    'Find and book your perfect rental car. Reliable and budget-friendly rentals for any journey.',
+  openGraph: {
+    title: 'Rental Car',
+    description:
+      'Find and book your perfect rental car. Reliable and budget-friendly rentals for any journey.',
+    url: 'https://rental-car-pet-project.vercel.app',
+    images: [
+      {
+        url: '/images/og-image.jpg',
+        width: 640,
+        height: 640,
+        alt: 'Rental Car logo image',
+      },
+    ],
+  },
 };
 export default function RootLayout({
   children,
