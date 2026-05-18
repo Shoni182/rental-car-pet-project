@@ -46,17 +46,35 @@ const CarDetails = () => {
           width={640}
           height={512}
         />
-        <RentalForm />
+        <RentalForm carId={car.id} />
       </div>
 
       {/* Права Колонка  */}
 
       <div className={css.rightCollumn}>
-        <CarInfo />
+        <CarInfo
+          brand={car.brand}
+          model={car.model}
+          year={car.year}
+          id={car.id}
+          rentalPrice={car.rentalPrice}
+          location={{
+            city: car.location.city,
+            country: car.location.country,
+          }}
+          description={car.description}
+          rentalConditions={[]}
+        />
         <div className={css.divider}></div>
-        <CarSpecs />
+        <CarSpecs
+          year={car.year}
+          type={car.type}
+          fuelConsumption={car.fuelConsumption}
+          engine={car.engine}
+          mileage={car.mileage}
+        />
         <div className={css.divider}></div>
-        <CarFeatures />
+        <CarFeatures features={car.features} />
       </div>
     </div>
   );

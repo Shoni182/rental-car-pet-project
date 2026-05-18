@@ -1,8 +1,7 @@
-type CarFeatures = {
+type CarFeaturesProps = {
   features: string[];
 };
 
-const CarFeature = () => {
-  return <h1>CarFeature</h1>;
-};
-export default CarFeature;
+export default function CarFeatures({ features }: CarFeaturesProps) {
+  return <h1>CarFeatures</h1>;
+}
