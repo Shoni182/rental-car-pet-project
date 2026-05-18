@@ -1,3 +1,4 @@
-export default function CarFeature() {
+const CarFeature = () => {
   return <h1>CarFeature</h1>;
-}
+};
+export default CarFeature;

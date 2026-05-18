@@ -6,10 +6,10 @@ import { fetchCarById } from '@/lib/api';
 import Image from 'next/image';
 
 // components
-import { CarFeatures } from '@/components/CarDetails/CarFeatures/CarFeatures';
-import { CarInfo } from '@/components/CarDetails/CarInfo/CarInfo';
-import { CarSpecs } from '@/components/CarDetails/CarSpecs/CarSpecs';
-import { RentalForm } from '@/components/CarDetails/RentalForm/RentalForm';
+import CarFeatures from '@/components/CarDetails/CarFeatures/CarFeatures';
+import CarInfo from '@/components/CarDetails/CarInfo/CarInfo';
+import CarSpecs from '@/components/CarDetails/CarSpecs/CarSpecs';
+import RentalForm from '@/components/CarDetails/RentalForm/RentalForm';
 
 // Вставити компоненти useQuery useParams та fetchcars by id
 // створити функцію комопнент CarDetails
@@ -35,21 +35,22 @@ const CarDetails = () => {
   if (error || !car) return <p>Some error..</p>;
 
   return (
-    <>
+    <div className={css.carDetailsContainer}>
       {/* Ліва Колонка  */}
 
-      <div>
+      <div className={css.leftCollumn}>
         <Image alt="" className={css.carImage} />
         <RentalForm carId={car.id} />
       </div>
 
       {/* Права Колонка  */}
-      <div>
+
+      <div className={css.rightCollumn}>
         <CarInfo carId={car.id} />
         <CarSpecs carId={car.id} />
         <CarFeatures carId={car.id} />
       </div>
-    </>
+    </div>
   );
 };
 
