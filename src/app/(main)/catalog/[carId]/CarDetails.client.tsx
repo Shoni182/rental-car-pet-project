@@ -39,16 +39,16 @@ const CarDetails = () => {
       {/* Ліва Колонка  */}
 
       <div className={css.leftCollumn}>
-        <Image alt="" className={css.carImage} />
-        <RentalForm carId={car.id} />
+        {/* <Image alt="" className={css.carImage} /> */}
+        <RentalForm />
       </div>
 
       {/* Права Колонка  */}
 
       <div className={css.rightCollumn}>
-        <CarInfo carId={car.id} />
-        <CarSpecs carId={car.id} />
-        <CarFeatures carId={car.id} />
+        <CarInfo />
+        <CarSpecs />
+        <CarFeatures />
       </div>
     </div>
   );
