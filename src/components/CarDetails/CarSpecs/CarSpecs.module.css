@@ -1,0 +1,31 @@
+.container {
+    padding: 24px 0 24px 0;
+}
+
+.specsTitle {
+    margin-bottom: 20px;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 120%;
+    color: var(--main);
+}
+
+
+.item {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 125%;
+    color: var(--main);
+
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.icon {}
+
+.listContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}

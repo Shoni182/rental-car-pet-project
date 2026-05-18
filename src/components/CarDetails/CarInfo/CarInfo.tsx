@@ -21,7 +21,7 @@ export default function CarInfo({
   rentalConditions,
 }: CarInfoProps) {
   return (
-    <div className={css.infoContainer}>
+    <div className={css.container}>
       <h2 className={css.title}>
         {brand} {model},{year}
       </h2>
@@ -38,14 +38,14 @@ export default function CarInfo({
       <p className={css.description}>{description}</p>
 
       <h3 className={css.conditionsTitle}>Rental Conditions:</h3>
-      <ul>
+      <ul className={css.listContainer}>
         {rentalConditions.map((e) => (
           <li key={e} className={css.list}>
             <span className={css.listItem}>
               <svg width={16} height={16} className={css.icon}>
                 <use href="/sprites.svg#icon-check-circle" />
               </svg>
-              <p className={css.listText}>{e}</p>
+              {e}
             </span>
           </li>
         ))}

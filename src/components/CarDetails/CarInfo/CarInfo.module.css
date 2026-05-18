@@ -1,4 +1,6 @@
-.infoContainer {}
+.container {
+    /* margin-top: 0 auto; */
+}
 
 .title {
     text-align: start;
@@ -46,19 +48,23 @@
 }
 
 .list {
-    margin-bottom: 24px;
+    /* margin-bottom: 24px; */
 }
 
 .listItem {
-
-    display: flex;
-    align-items: center;
-    gap: 16px;
-}
-
-.listText {
     font-weight: 500;
     font-size: 16px;
     line-height: 125%;
     color: var(--main);
+
+    /* display: flex;
+    align-items: center; */
+    /* gap: 16px; */
+}
+
+.listContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 24px;
 }
