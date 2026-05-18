@@ -3,6 +3,7 @@ import css from './Filters.module.css';
 import { CarFilter, FilterTypes } from '@/types/car';
 import { useState, useEffect, useRef } from 'react';
 import { fetchFilters } from '@/lib/api';
+import toast from 'react-hot-toast';
 
 // import Image from 'next/image';
 
@@ -28,9 +29,9 @@ export default function Filters({ onFilter }: FilterProps) {
   // Selected options
   const [selectedBrand, setSelectedBrand] = useState<string[]>([]);
   const [selectedPrice, setSelectedPrice] = useState<number[]>([]);
-  // Entered maliage
-  const [minMaliage, setMinMaliage] = useState<number | ''>('');
-  const [maxMaliage, setMaxMaliage] = useState<number | ''>('');
+  // Entered Mileage
+  const [minMileage, setMinMileage] = useState<number | ''>('');
+  const [maxMileage, setMaxMileage] = useState<number | ''>('');
 
   const priceOptions = filterOptions?.price
     ? buildPriceOptions(filterOptions.price.min, filterOptions.price.max)
@@ -39,8 +40,9 @@ export default function Filters({ onFilter }: FilterProps) {
   function handleReset() {
     setSelectedBrand([]);
     setSelectedPrice([]);
-    setMinMaliage('');
-    setMaxMaliage('');
+    setMinMileage('');
+    setMaxMileage('');
+    onFilter({ brand: '', price: null, mileageFrom: '', mileageTo: '' });
   }
 
   //: Дістаємо значення фільтру
@@ -52,8 +54,7 @@ export default function Filters({ onFilter }: FilterProps) {
 
         setFilterOptions(data);
       } catch {
-        //   Error component
-        console.error('Failed to load filters');
+        toast.error('Не вдалося завантажити фільтри');
       }
     };
     void loadFilters();
@@ -178,9 +179,9 @@ export default function Filters({ onFilter }: FilterProps) {
             pattern="[0-9]*"
             className={css.inputMin}
             placeholder="From"
-            value={minMaliage}
+            value={minMileage}
             onChange={(e) =>
-              setMinMaliage(e.target.value === '' ? '' : Number(e.target.value))
+              setMinMileage(e.target.value === '' ? '' : Number(e.target.value))
             }
             onKeyDown={(e) => {
               if (['-', '+', 'e', 'E', '.', '='].includes(e.key)) {
@@ -196,9 +197,9 @@ export default function Filters({ onFilter }: FilterProps) {
             pattern="[0-9]*"
             className={css.inputMax}
             placeholder="To"
-            value={maxMaliage}
+            value={maxMileage}
             onChange={(e) =>
-              setMaxMaliage(e.target.value === '' ? '' : Number(e.target.value))
+              setMaxMileage(e.target.value === '' ? '' : Number(e.target.value))
             }
             onKeyDown={(e) => {
               if (['-', '+', 'e', 'E', '.', '='].includes(e.key)) {
@@ -216,8 +217,8 @@ export default function Filters({ onFilter }: FilterProps) {
             onFilter({
               brand: selectedBrand[0] ?? '',
               price: selectedPrice[0] ?? null,
-              mileageFrom: String(minMaliage),
-              mileageTo: String(maxMaliage),
+              mileageFrom: String(minMileage),
+              mileageTo: String(maxMileage),
             })
           }
         >
@@ -230,6 +231,3 @@ export default function Filters({ onFilter }: FilterProps) {
     </div>
   );
 }
-
-// треба дістати мін та мах  а потім з додатком 10+ пройтись по списк
-// поки значення і більше мін і менше мах то рязувати дотам
