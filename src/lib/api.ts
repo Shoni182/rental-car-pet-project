@@ -1,9 +1,9 @@
-import { CarResponse, Car, FilterTypes, RentalFormData } from '@/types/car';
+import { CarResponse, Car, FilterTypes, BookingResponse } from '@/types/car';
 import axios from 'axios';
 
 axios.defaults.baseURL = 'https://car-rental-api.goit.study';
 
-// : GET all Cars
+//GET all Cars
 export const fetchCars = async ({
   brand,
   price,
@@ -29,21 +29,21 @@ export const fetchCars = async ({
   return res.data;
 };
 
-// : Get one Car
+//Get one Car
 export const fetchCarById = async (id: string) => {
   const res = await axios.get<Car>(`/cars/${id}`);
   return res.data;
 };
 
-// : GET filters
+//GET filters
 export const fetchFilters = async () => {
   const res = await axios.get<FilterTypes>('/cars/filters');
   return res.data;
 };
 
-// : POST Bookign request
-export const bookingRequest = async (carId: string, data: RentalFormData) => {
-  const res = await axios.post<RentalFormData>(
+//POST Booking request
+export const bookingRequest = async (carId: string, data: BookingResponse) => {
+  const res = await axios.post<BookingResponse>(
     `/cars/${carId}/booking-requests`,
     data,
   );

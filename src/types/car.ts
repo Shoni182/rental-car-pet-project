@@ -48,12 +48,8 @@ export type CarResponse = {
 };
 
 //: Form
-export type RentalFormData = {
+export type BookingResponse = {
   name: string;
   email: string;
   comment: string;
-};
-//: Form Response
-export type BookingResponse = {
-  message: string;
 };
