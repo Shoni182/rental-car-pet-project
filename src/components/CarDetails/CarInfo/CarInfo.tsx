@@ -3,7 +3,6 @@ type CarInfoProps = {
   brand: string;
   model: string;
   year: number;
-  id: string;
   rentalPrice: string;
   location: { city: string; country: string };
   description: string;
@@ -14,7 +13,6 @@ export default function CarInfo({
   brand,
   model,
   year,
-  id,
   rentalPrice,
   location,
   description,
