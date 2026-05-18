@@ -22,8 +22,7 @@ export default function Button({
   return (
     <Link
       href={path}
-      type="button"
-      target={target ? '_blank' : ''}
+      target={target ? '_blank' : undefined}
       className={style}
       style={{ padding: paddingStyle }}
     >

@@ -5,6 +5,7 @@ import { fetchCars } from '@/lib/api';
 import css from './page.module.css';
 import Filters from '@/components/Filters/Filters';
 import { useRouter } from 'next/navigation';
+import toast from 'react-hot-toast';
 // import type { Metadata } from 'next';
 
 // import Button from '@/components/ui/Button/Button';

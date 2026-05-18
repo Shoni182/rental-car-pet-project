@@ -34,7 +34,7 @@ export default function RootLayout({
       <body>
         <TanStackProvider>
           <Header />
-          <Toaster />
+          <Toaster position="top-right" />
           {children}
         </TanStackProvider>
       </body>
