@@ -19,15 +19,15 @@ import RentalForm from '@/components/CarDetails/RentalForm/RentalForm';
 // return структуру - написати її
 
 const CarDetails = () => {
-  const { id } = useParams();
+  const { carId } = useParams();
 
   const {
     data: car,
     isLoading,
     error,
   } = useQuery({
-    queryKey: ['car', { id: id }],
-    queryFn: () => fetchCarById(id as string),
+    queryKey: ['car', { id: carId }],
+    queryFn: () => fetchCarById(carId as string),
     refetchOnMount: false,
   });
 
@@ -39,7 +39,13 @@ const CarDetails = () => {
       {/* Ліва Колонка  */}
 
       <div className={css.leftCollumn}>
-        {/* <Image alt="" className={css.carImage} /> */}
+        <Image
+          src={car.img}
+          alt="ds"
+          className={css.carImage}
+          width={640}
+          height={512}
+        />
         <RentalForm />
       </div>
 
@@ -47,7 +53,9 @@ const CarDetails = () => {
 
       <div className={css.rightCollumn}>
         <CarInfo />
+        <div className={css.divider}></div>
         <CarSpecs />
+        <div className={css.divider}></div>
         <CarFeatures />
       </div>
     </div>
