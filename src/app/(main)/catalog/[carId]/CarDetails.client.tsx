@@ -63,7 +63,7 @@ const CarDetails = () => {
             country: car.location.country,
           }}
           description={car.description}
-          rentalConditions={[]}
+          rentalConditions={car.rentalConditions}
         />
         <div className={css.divider}></div>
         <CarSpecs
