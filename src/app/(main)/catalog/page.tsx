@@ -4,36 +4,16 @@ import { useInfiniteQuery } from '@tanstack/react-query';
 import { fetchCars } from '@/lib/api';
 import css from './page.module.css';
 import Filters from '@/components/Filters/Filters';
-import { useRouter } from 'next/navigation';
 import toast from 'react-hot-toast';
-// import type { Metadata } from 'next';
-
-// import Button from '@/components/ui/Button/Button';
-
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import { CarFilter } from '@/types/car';
-import { useSearchParams } from 'next/navigation';
+import { useFilterStore } from '@/store/filterStore';
 
 function Catalog() {
-  const router = useRouter();
-  const searchParams = useSearchParams();
-
-  const [filters, setFilters] = useState<CarFilter>({
-    brand: searchParams.get('brand') ?? '',
-    price: searchParams.get('price') ? Number(searchParams.get('price')) : null,
-    mileageFrom: searchParams.get('mileageFrom') ?? '',
-    mileageTo: searchParams.get('mileageTo') ?? '',
-  });
+  const { filters, setFilters } = useFilterStore();
 
   const handleFilter = (newFilters: CarFilter) => {
     setFilters(newFilters);
-    const params = new URLSearchParams();
-    if (newFilters.brand) params.set('brand', newFilters.brand);
-    if (newFilters.price) params.set('price', String(newFilters.price));
-    if (newFilters.mileageFrom)
-      params.set('mileageFrom', newFilters.mileageFrom);
-    if (newFilters.mileageTo) params.set('mileageTo', newFilters.mileageTo);
-    router.push(`/catalog?${params.toString()}`);
   };
 
   const {
@@ -62,6 +42,10 @@ function Catalog() {
       return lastPage.totalPages > currentPage ? currentPage + 1 : undefined;
     },
   });
+
+  useEffect(() => {
+    if (error) toast.error(error.message);
+  }, [error]);
 
   return status === 'pending' ? (
     <p>Loading...</p>
@@ -97,7 +81,13 @@ function Catalog() {
         {/* Load More  */}
         {hasNextPage && (
           <button
-            onClick={() => fetchNextPage()}
+            onClick={async () => {
+              try {
+                await fetchNextPage();
+              } catch {
+                toast.error('Не вдалося завантажити більше авто');
+              }
+            }}
             disabled={!hasNextPage || isFetching}
             className={css.secondaryButton}
           >
