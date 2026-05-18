@@ -21,6 +21,9 @@
 
 .carImage {
     border-radius: 16px;
+    display: block;
+    object-fit: cover;
+    margin-bottom: 32px;
 }
 
 .rightCollumn {
