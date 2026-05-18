@@ -1,36 +1,90 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚗 Rental Car — Car Booking App
 
-## Getting Started
+A modern web application for browsing and booking rental cars.
+Built with ❤️ using Next.js and modern frontend technologies.
 
-First, run the development server:
+---
+
+## 🚀 Features
+
+- 🚘 Browse a full catalog of rental cars
+- 🔍 Filter by brand, price, and mileage
+- 📄 Detailed car page with specs, features, and rental conditions
+- 📝 Booking request form with validation
+- 🔔 Toast notifications for actions and errors
+- ♾️ Infinite scroll / Load More pagination
+- ⚡ Fast performance with Next.js App Router and SSR prefetch
+
+---
+
+## 🛠️ Tech Stack
+
+- **Frontend:** Next.js 16 (App Router), React 19, TypeScript
+- **Styling:** CSS Modules
+- **State Management:** Zustand (filters), TanStack Query (server state)
+- **HTTP Requests:** Axios
+- **Forms & Validation:** Formik + Yup
+- **Notifications:** react-hot-toast
+- **Other:** ESLint, Prettier
+
+---
+
+## 📦 Installation
 
 ```bash
+git clone https://github.com/your-username/rental-car-pet-project.git
+cd rental-car-pet-project
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🔑 Environment Variables
 
-## Learn More
+This project uses a public API and does not require environment variables by default.
+If needed, create a `.env.local` file in the project root:
 
-To learn more about Next.js, take a look at the following resources:
+```
+NEXT_PUBLIC_API_URL=https://car-rental-api.goit.study
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📁 Project Structure
 
-## Deploy on Vercel
+```
+src/
+ ├── app/
+ │    ├── layout.tsx
+ │    ├── not-found.tsx
+ │    └── (main)/
+ │         ├── page.tsx
+ │         └── catalog/
+ │              ├── page.tsx
+ │              └── [carId]/
+ ├── components/
+ │    ├── CarCard/
+ │    ├── CarDetails/
+ │    ├── Filters/
+ │    ├── Header/
+ │    ├── TanStackProvider/
+ │    └── ui/
+ ├── lib/
+ │    └── api.ts
+ ├── store/
+ │    └── filterStore.ts
+ └── types/
+      └── car.ts
+public/
+ ├── images/
+ └── sprites.svg
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 👨‍💻 Author
+
+**Shoni Pal** — aspiring Frontend Developer 🚀
