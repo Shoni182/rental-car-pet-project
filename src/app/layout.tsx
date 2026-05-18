@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Inter, Manrope } from 'next/font/google';
 import TanStackProvider from '@/components/TanStackProvider/TanStackProvider';
 import './globals.css';
+import { Toaster } from 'react-hot-toast';
 // Pages
 import Header from '@/components/Header/Header';
 
@@ -33,6 +34,7 @@ export default function RootLayout({
       <body>
         <TanStackProvider>
           <Header />
+          <Toaster />
           {children}
         </TanStackProvider>
       </body>
