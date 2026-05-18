@@ -33,6 +33,8 @@
     font-size: 16px;
     line-height: 125%;
     color: var(--main);
+
+    margin-bottom: 20px;
 }
 
 .icon {
@@ -47,19 +49,12 @@
     color: var(--main);
 }
 
-.list {
-    /* margin-bottom: 24px; */
-}
 
-.listItem {
+.item {
     font-weight: 500;
     font-size: 16px;
     line-height: 125%;
     color: var(--main);
-
-    /* display: flex;
-    align-items: center; */
-    /* gap: 16px; */
 }
 
 .listContainer {

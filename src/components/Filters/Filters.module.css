@@ -8,9 +8,6 @@
     height: 96px;
     width: 752px;
     margin-top: 84px;
-    margin-bottom: 60px;
-
-
 }
 
 .title {
@@ -42,10 +39,6 @@
     cursor: pointer;
     color: var(--main);
 }
-
-/* .dropdownTrigger:hover {
-    border-color: rgba(0, 0, 0, 0.12);
-} */
 
 .placeholder {
     font-weight: 500;

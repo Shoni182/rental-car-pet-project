@@ -23,7 +23,7 @@ export default function CarInfo({
   return (
     <div className={css.container}>
       <h2 className={css.title}>
-        {brand} {model},{year}
+        {brand} {model}, {year}
       </h2>
 
       <span className={css.addressItem}>
@@ -40,8 +40,8 @@ export default function CarInfo({
       <h3 className={css.conditionsTitle}>Rental Conditions:</h3>
       <ul className={css.listContainer}>
         {rentalConditions.map((e) => (
-          <li key={e} className={css.list}>
-            <span className={css.listItem}>
+          <li key={e}>
+            <span className={css.item}>
               <svg width={16} height={16} className={css.icon}>
                 <use href="/sprites.svg#icon-check-circle" />
               </svg>
