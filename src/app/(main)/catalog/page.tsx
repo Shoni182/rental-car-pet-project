@@ -5,9 +5,10 @@ import { fetchCars } from '@/lib/api';
 import css from './page.module.css';
 import Filters from '@/components/Filters/Filters';
 import toast from 'react-hot-toast';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { CarFilter } from '@/types/car';
 import { useFilterStore } from '@/store/filterStore';
+import Loader from '@/components/ui/Loader/Loader';
 
 function Catalog() {
   const { filters, setFilters } = useFilterStore();
@@ -15,7 +16,6 @@ function Catalog() {
   const handleFilter = (newFilters: CarFilter) => {
     setFilters(newFilters);
   };
-
   const {
     data,
     error,
@@ -43,14 +43,10 @@ function Catalog() {
     },
   });
 
-  useEffect(() => {
-    if (error) toast.error(error.message);
-  }, [error]);
-
   return status === 'pending' ? (
-    <p>Loading...</p>
+    <Loader />
   ) : status === 'error' ? (
-    <p>Error: {error.message}</p>
+    toast.error(error.message)
   ) : (
     <section>
       <Filters onFilter={handleFilter} />
