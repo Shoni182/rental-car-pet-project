@@ -10,12 +10,14 @@ export const fetchCars = async ({
   minMileage,
   maxMileage,
   page,
+  perPage,
 }: {
   brand?: string;
   price?: number;
   minMileage?: number;
   maxMileage?: number;
   page?: number;
+  perPage: number;
 }) => {
   const res = await axios.get<CarResponse>('/cars', {
     params: {
@@ -24,6 +26,7 @@ export const fetchCars = async ({
       minMileage: minMileage ?? undefined,
       maxMileage: maxMileage ?? undefined,
       page: page ?? 1,
+      perPage: perPage,
     },
   });
   return res.data;

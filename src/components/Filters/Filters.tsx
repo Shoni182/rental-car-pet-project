@@ -3,9 +3,8 @@ import css from './Filters.module.css';
 import { CarFilter, FilterTypes } from '@/types/car';
 import { useState, useEffect, useRef } from 'react';
 import { fetchFilters } from '@/lib/api';
+import { useFilterStore } from '@/store/filterStore';
 import toast from 'react-hot-toast';
-
-// import Image from 'next/image';
 
 interface FilterProps {
   onFilter: (filters: CarFilter) => void;
@@ -18,6 +17,8 @@ function buildPriceOptions(min: number, max: number) {
 }
 
 export default function Filters({ onFilter }: FilterProps) {
+  const { filters } = useFilterStore();
+
   // Dropdown of the option list
   const [isBrandDropdownOpen, setIsBrandDropdownOpen] = useState(false);
   const [isPriceDropdownOpen, setIsPriceDropdownOpen] = useState(false);
@@ -27,11 +28,19 @@ export default function Filters({ onFilter }: FilterProps) {
   // All inpue data
   const [filterOptions, setFilterOptions] = useState<FilterTypes | null>(null);
   // Selected options
-  const [selectedBrand, setSelectedBrand] = useState<string[]>([]);
-  const [selectedPrice, setSelectedPrice] = useState<number[]>([]);
+  const [selectedBrand, setSelectedBrand] = useState<string[]>(
+    filters.brand ? [filters.brand] : [],
+  );
+  const [selectedPrice, setSelectedPrice] = useState<number[]>(
+    filters.price ? [filters.price] : [],
+  );
   // Entered Mileage
-  const [minMileage, setMinMileage] = useState<number | ''>('');
-  const [maxMileage, setMaxMileage] = useState<number | ''>('');
+  const [minMileage, setMinMileage] = useState<number | ''>(
+    filters.mileageFrom ? Number(filters.mileageFrom) : '',
+  );
+  const [maxMileage, setMaxMileage] = useState<number | ''>(
+    filters.mileageTo ? Number(filters.mileageTo) : '',
+  );
 
   const priceOptions = filterOptions?.price
     ? buildPriceOptions(filterOptions.price.min, filterOptions.price.max)

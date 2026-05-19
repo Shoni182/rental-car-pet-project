@@ -35,6 +35,7 @@ function Catalog() {
           ? Number(filters.mileageFrom)
           : undefined,
         maxMileage: filters.mileageTo ? Number(filters.mileageTo) : undefined,
+        perPage: 12,
       }),
     initialPageParam: 1,
     getNextPageParam: (lastPage) => {
