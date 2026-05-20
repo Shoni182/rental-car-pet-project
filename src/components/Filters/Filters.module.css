@@ -1,13 +1,10 @@
 .filterContainer {
     display: flex;
     flex-direction: row;
-    /* align-items: center; */
     justify-content: center;
+    flex-wrap: wrap;
     gap: 16px;
-    margin: 0 auto;
-    height: 96px;
-    width: 752px;
-    margin-top: 84px;
+    margin-bottom: 60px;
 }
 
 .title {

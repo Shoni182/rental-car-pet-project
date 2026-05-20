@@ -11,6 +11,7 @@ import CarFeatures from '@/components/CarDetails/CarFeatures/CarFeatures';
 import CarInfo from '@/components/CarDetails/CarInfo/CarInfo';
 import CarSpecs from '@/components/CarDetails/CarSpecs/CarSpecs';
 import RentalForm from '@/components/CarDetails/RentalForm/RentalForm';
+import Container from '@/components/ui/Container/Container';
 
 const CarDetails = () => {
   const { carId } = useParams();
@@ -31,47 +32,49 @@ const CarDetails = () => {
   }
 
   return (
-    <div className={css.carDetailsContainer}>
-      {/* Ліва Колонка  */}
+    <Container>
+      <div className={css.carDetailsContainer}>
+        {/* Ліва Колонка  */}
 
-      <div className={css.leftCollumn}>
-        <Image
-          src={car.img}
-          alt="ds"
-          className={css.carImage}
-          width={640}
-          height={512}
-        />
-        <RentalForm carId={car.id} />
+        <div className={css.leftCollumn}>
+          <Image
+            src={car.img}
+            alt="ds"
+            className={css.carImage}
+            width={640}
+            height={512}
+          />
+          <RentalForm carId={car.id} />
+        </div>
+
+        {/* Права Колонка  */}
+
+        <div className={css.rightCollumn}>
+          <CarInfo
+            brand={car.brand}
+            model={car.model}
+            year={car.year}
+            rentalPrice={car.rentalPrice}
+            location={{
+              city: car.location.city,
+              country: car.location.country,
+            }}
+            description={car.description}
+            rentalConditions={car.rentalConditions}
+          />
+          <div className={css.divider}></div>
+          <CarSpecs
+            year={car.year}
+            type={car.type}
+            fuelConsumption={car.fuelConsumption}
+            engine={car.engine}
+            mileage={car.mileage}
+          />
+          <div className={css.divider}></div>
+          <CarFeatures features={car.features} />
+        </div>
       </div>
-
-      {/* Права Колонка  */}
-
-      <div className={css.rightCollumn}>
-        <CarInfo
-          brand={car.brand}
-          model={car.model}
-          year={car.year}
-          rentalPrice={car.rentalPrice}
-          location={{
-            city: car.location.city,
-            country: car.location.country,
-          }}
-          description={car.description}
-          rentalConditions={car.rentalConditions}
-        />
-        <div className={css.divider}></div>
-        <CarSpecs
-          year={car.year}
-          type={car.type}
-          fuelConsumption={car.fuelConsumption}
-          engine={car.engine}
-          mileage={car.mileage}
-        />
-        <div className={css.divider}></div>
-        <CarFeatures features={car.features} />
-      </div>
-    </div>
+    </Container>
   );
 };
 

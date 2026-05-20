@@ -2,7 +2,7 @@
     border-radius: 16px;
     padding: 16px;
     width: 276px;
-    /* height: 464px; */
+    height: 464px;
 
     background: var(--white);
 }
@@ -26,8 +26,6 @@
     margin-bottom: 16px;
 }
 
-/* .title {} */
-
 
 .model {
     color: var(--light-blue);
@@ -36,17 +34,12 @@
 .price {}
 
 .detailsContainer {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    flex-wrap: wrap;
     border-radius: 8px;
     padding: 8px;
     width: 244px;
-    height: 52px;
+    /* height: 52px; */
     background: var(--bg);
-
-    margin-bottom: 24px;
+    /* margin-bottom: 24px; */
 }
 
 .carDetails {
@@ -64,7 +57,7 @@
     margin-left: 8px;
     margin-right: 8px;
     background-color: var(--gray-light);
-    ;
+
     display: inline-block;
     vertical-align: middle;
 

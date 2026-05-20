@@ -9,6 +9,7 @@ import React from 'react';
 import { CarFilter } from '@/types/car';
 import { useFilterStore } from '@/store/filterStore';
 import Loader from '@/components/ui/Loader/Loader';
+import Container from '@/components/ui/Container/Container';
 
 function Catalog() {
   const { filters, setFilters } = useFilterStore();
@@ -53,27 +54,29 @@ function Catalog() {
       <Filters onFilter={handleFilter} />
 
       <div className={css.catalogContainer}>
-        {data.pages.map((catalog, i) => (
-          <React.Fragment key={i}>
-            {(catalog.cars ?? []).map((cars) => (
-              <CarCard
-                key={cars.id}
-                brand={cars.brand}
-                id={cars.id}
-                img={cars.img}
-                model={cars.model}
-                year={cars.year}
-                rentalPrice={cars.rentalPrice}
-                location={
-                  cars.location ?? { country: '', city: '', address: '' }
-                }
-                rentalCompany={cars.rentalCompany}
-                type={cars.type}
-                mileage={cars.mileage}
-              />
-            ))}
-          </React.Fragment>
-        ))}
+        <ul className={css.catalogList}>
+          {data.pages.map((catalog, i) => (
+            <React.Fragment key={i}>
+              {(catalog.cars ?? []).map((cars) => (
+                <CarCard
+                  key={cars.id}
+                  brand={cars.brand}
+                  id={cars.id}
+                  img={cars.img}
+                  model={cars.model}
+                  year={cars.year}
+                  rentalPrice={cars.rentalPrice}
+                  location={
+                    cars.location ?? { country: '', city: '', address: '' }
+                  }
+                  rentalCompany={cars.rentalCompany}
+                  type={cars.type}
+                  mileage={cars.mileage}
+                />
+              ))}
+            </React.Fragment>
+          ))}
+        </ul>
 
         {/* Load More  */}
         {hasNextPage && (

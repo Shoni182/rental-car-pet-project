@@ -31,7 +31,7 @@ export default function CarCard({
   mileage,
 }: CarCardProps) {
   return (
-    <div className={css.carContainer}>
+    <li className={css.carContainer}>
       <Image
         src={img}
         alt="car image"
@@ -44,7 +44,7 @@ export default function CarCard({
         <p className={css.title}>
           {brand} <span className={css.model}>{model}</span>, {year}
         </p>
-        <span className={css.price}>{rentalPrice}</span>
+        <span className={css.price}>${rentalPrice}</span>
       </div>
 
       <div className={css.detailsContainer}>
@@ -53,8 +53,6 @@ export default function CarCard({
         <span className={css.carDetails}>{rentalCompany}</span>
         <span className={css.carDetails}>{type}</span>
         <span className={css.carDetails}>{mileage}km</span>
-
-        {/* {isMile && <span>{mileage}mile</span>} */}
       </div>
 
       <Button
@@ -64,6 +62,6 @@ export default function CarCard({
         padding={[12, 0]}
         buttonVariant="primaryButton"
       />
-    </div>
+    </li>
   );
 }

@@ -1,6 +1,7 @@
 .header {
     background: var(--white);
     border-bottom: 1px solid var(--badges);
+    margin-bottom: 84px;
 }
 
 .headerContainer {
