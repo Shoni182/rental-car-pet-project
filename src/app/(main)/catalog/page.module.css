@@ -2,18 +2,17 @@
 
 
 .catalogList {
-
     display: flex;
-
     flex-wrap: wrap;
     gap: 42px 32px;
-
     justify-content: center;
+    margin-bottom: 48px;
+
 }
 
-
-
 .secondaryButton {
+    display: block;
+    margin: 0 auto;
     border: 1px solid var(--light-blue);
     border-radius: 12px;
     text-align: center;
@@ -33,5 +32,4 @@
 .secondaryButton:focus {
     border: 1px solid var(--dark-blue);
     border-radius: 12px;
-
 }
