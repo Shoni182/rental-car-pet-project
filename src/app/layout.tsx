@@ -49,11 +49,9 @@ export default function RootLayout({
     <html lang="en" className={`${manrope.variable} ${inter.variable}`}>
       <body>
         <TanStackProvider>
-          <Container>
-            <Header />
-            <Toaster position="top-right" />
-            {children}
-          </Container>
+          <Header />
+          <Toaster position="top-right" />
+          {children}
         </TanStackProvider>
       </body>
     </html>

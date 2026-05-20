@@ -3,6 +3,7 @@ import Image from 'next/image';
 
 import Button from '../ui/Button/Button';
 import { Car } from '@/types/car';
+import Link from 'next/link';
 
 type CarCardProps = Pick<
   Car,
@@ -47,21 +48,17 @@ export default function CarCard({
         <span className={css.price}>${rentalPrice}</span>
       </div>
 
-      <div className={css.detailsContainer}>
-        <span className={css.carDetails}>{location.city}</span>
-        <span className={css.carDetails}>{location.country}</span>
-        <span className={css.carDetails}>{rentalCompany}</span>
-        <span className={css.carDetails}>{type}</span>
-        <span className={css.carDetails}>{mileage}km</span>
+      <div className={css.tagsContainer}>
+        <span className={css.tag}>{location.city}</span>
+        <span className={css.tag}>{location.country}</span>
+        <span className={css.tag}>{rentalCompany}</span>
+        <span className={css.tag}>{type}</span>
+        <span className={css.tag}>{mileage}km</span>
       </div>
 
-      <Button
-        path={`/catalog/${id}`}
-        text="Read more"
-        target={true}
-        padding={[12, 0]}
-        buttonVariant="primaryButton"
-      />
+      <Link href={`/catalog/${id}`} target={'_blank'} className={css.button}>
+        Read more
+      </Link>
     </li>
   );
 }

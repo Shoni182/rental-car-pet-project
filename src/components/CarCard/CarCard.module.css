@@ -1,4 +1,6 @@
 .carContainer {
+    display: flex;
+    flex-direction: column;
     border-radius: 16px;
     padding: 16px;
     width: 276px;
@@ -33,16 +35,23 @@
 
 .price {}
 
-.detailsContainer {
+.tagsContainer {
     border-radius: 8px;
     padding: 8px;
-    width: 244px;
-    /* height: 52px; */
     background: var(--bg);
-    /* margin-bottom: 24px; */
+    margin-bottom: 24px;
 }
 
-.carDetails {
+.tag {
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 133%;
+    color: var(--main);
+
+}
+
+.tagText {
     font-family: var(--font-family);
     font-weight: 400;
     font-size: 12px;
@@ -50,15 +59,47 @@
     color: var(--main);
 }
 
-.carDetails:not(:last-child)::after {
+.tag:not(:last-child)::after {
     content: "";
     width: 1px;
     height: 16px;
-    margin-left: 8px;
+    margin-left: 6px;
     margin-right: 8px;
     background-color: var(--gray-light);
 
     display: inline-block;
     vertical-align: middle;
 
+}
+
+.tagLine {
+    width: 1px;
+    height: 16px;
+    margin-left: 6px;
+    margin-right: 8px;
+    color: var(--gray-light);
+}
+
+
+.button {
+    border: none;
+    border-radius: 12px;
+    background: var(--light-blue);
+    display: block;
+    text-align: center;
+    padding: 12px 0;
+
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 125%;
+    color: var(--white);
+
+    /* margin-top: 20px; */
+    /* justify-self: flex-end; */
+
+}
+
+.button:hover,
+.button:focus {
+    background: var(--dark-blue);
 }

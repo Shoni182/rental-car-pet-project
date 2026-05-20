@@ -51,52 +51,54 @@ function Catalog() {
     toast.error(error.message)
   ) : (
     <section>
-      <Filters onFilter={handleFilter} />
+      <Container>
+        <Filters onFilter={handleFilter} />
 
-      <div className={css.catalogContainer}>
-        <ul className={css.catalogList}>
-          {data.pages.map((catalog, i) => (
-            <React.Fragment key={i}>
-              {(catalog.cars ?? []).map((cars) => (
-                <CarCard
-                  key={cars.id}
-                  brand={cars.brand}
-                  id={cars.id}
-                  img={cars.img}
-                  model={cars.model}
-                  year={cars.year}
-                  rentalPrice={cars.rentalPrice}
-                  location={
-                    cars.location ?? { country: '', city: '', address: '' }
-                  }
-                  rentalCompany={cars.rentalCompany}
-                  type={cars.type}
-                  mileage={cars.mileage}
-                />
-              ))}
-            </React.Fragment>
-          ))}
-        </ul>
+        <div className={css.catalogContainer}>
+          <ul className={css.catalogList}>
+            {data.pages.map((catalog, i) => (
+              <React.Fragment key={i}>
+                {(catalog.cars ?? []).map((cars) => (
+                  <CarCard
+                    key={cars.id}
+                    brand={cars.brand}
+                    id={cars.id}
+                    img={cars.img}
+                    model={cars.model}
+                    year={cars.year}
+                    rentalPrice={cars.rentalPrice}
+                    location={
+                      cars.location ?? { country: '', city: '', address: '' }
+                    }
+                    rentalCompany={cars.rentalCompany}
+                    type={cars.type}
+                    mileage={cars.mileage}
+                  />
+                ))}
+              </React.Fragment>
+            ))}
+          </ul>
 
-        {/* Load More  */}
-        {hasNextPage && (
-          <button
-            onClick={async () => {
-              try {
-                await fetchNextPage();
-              } catch {
-                toast.error('Не вдалося завантажити більше авто');
-              }
-            }}
-            disabled={!hasNextPage || isFetching}
-            className={css.secondaryButton}
-          >
-            {isFetchingNextPage ? 'Loading more...' : 'Load More'}
-          </button>
-        )}
+          {/* Load More  */}
+          {hasNextPage && (
+            <button
+              onClick={async () => {
+                try {
+                  await fetchNextPage();
+                } catch {
+                  toast.error('Не вдалося завантажити більше авто');
+                }
+              }}
+              disabled={!hasNextPage || isFetching}
+              className={css.secondaryButton}
+            >
+              {isFetchingNextPage ? 'Loading more...' : 'Load More'}
+            </button>
+          )}
 
-        <div>{isFetching && !isFetchingNextPage ? 'Fetching...' : null}</div>
-      </div>
+          <div>{isFetching && !isFetchingNextPage ? 'Fetching...' : null}</div>
+        </div>
+      </Container>
     </section>
   );
 }
