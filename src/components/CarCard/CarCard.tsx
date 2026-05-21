@@ -1,7 +1,7 @@
 import css from './CarCard.module.css';
 import Image from 'next/image';
 
-import Button from '../ui/Button/Button';
+// import Button from '../ui/Button/Button';
 import { Car } from '@/types/car';
 import Link from 'next/link';
 
