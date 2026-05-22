@@ -53,7 +53,7 @@ export default function CarCard({
         <span className={css.tag}>{location.country}</span>
         <span className={css.tag}>{rentalCompany}</span>
         <span className={css.tag}>{type}</span>
-        <span className={css.tag}>{mileage}km</span>
+        <span className={css.tag}>{mileage.toLocaleString('uk-UA')} km</span>
       </div>
 
       <Link href={`/catalog/${id}`} target={'_blank'} className={css.button}>

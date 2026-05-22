@@ -22,7 +22,7 @@ export default function CarSpecs({
         <li className={css.list}>
           <span className={css.item}>
             <svg width={16} height={16} className={css.icon}>
-              <use href="/sprites.svg#icon-check-circle" />
+              <use href="/sprites.svg#icon-calendar" />
             </svg>
             Year: {year}
           </span>
@@ -31,7 +31,7 @@ export default function CarSpecs({
         <li className={css.list}>
           <span className={css.item}>
             <svg width={16} height={16} className={css.icon}>
-              <use href="/sprites.svg#icon-check-circle" />
+              <use href="/sprites.svg#icon-car" />
             </svg>
             Type: {type}
           </span>
@@ -40,7 +40,7 @@ export default function CarSpecs({
         <li className={css.list}>
           <span className={css.item}>
             <svg width={16} height={16} className={css.icon}>
-              <use href="/sprites.svg#icon-check-circle" />
+              <use href="/sprites.svg#icon-fuel-pump" />
             </svg>
             Fuel Consumption: {fuelConsumption}
           </span>
@@ -49,7 +49,7 @@ export default function CarSpecs({
         <li className={css.list}>
           <span className={css.item}>
             <svg width={16} height={16} className={css.icon}>
-              <use href="/sprites.svg#icon-check-circle" />
+              <use href="/sprites.svg#icon-gear" />
             </svg>
             Engine: {engine}
           </span>
@@ -58,7 +58,7 @@ export default function CarSpecs({
         <li className={css.list}>
           <span className={css.item}>
             <svg width={16} height={16} className={css.icon}>
-              <use href="/sprites.svg#icon-check-circle" />
+              <use href="/sprites.svg#icon-road-horizon" />
             </svg>
             Mileage: {mileage}km
           </span>

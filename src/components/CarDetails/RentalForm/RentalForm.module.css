@@ -28,6 +28,7 @@
 
 .input,
 .textarea {
+    height: 48px;
     width: 100%;
     background: var(--inputs);
     border: none;
@@ -41,6 +42,8 @@
 
     outline: none;
     resize: none;
+
+    /* margin-bottom: 24px; */
 }
 
 .input::placeholder,
