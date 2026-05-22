@@ -1,19 +1,19 @@
-.homeSection {
-    background-image: url('/images/HomeCar.jpg');
-    background-size: cover;
-    background-position: center;
-    padding-bottom: 60px;
+.homeSection {}
 
-    height: 700px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-}
 
 .homeContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: flex-end;
+    padding-bottom: 60px;
+
+
+    background-image: url('/images/HomeCar.jpg');
+    height: 700px;
+    max-width: 1440px;
+    background-size: cover;
+    background-position: center;
 }
 
 .title {
