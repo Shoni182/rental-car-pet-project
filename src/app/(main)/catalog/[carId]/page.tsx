@@ -7,33 +7,38 @@ import {
 // components
 import CarDetails from './CarDetails.client';
 import { fetchCarById } from '@/lib/api';
-
 import type { Metadata } from 'next';
-
-export const metadata: Metadata = {
-  title: 'Car Details | Rental Car',
-  description:
-    'View detailed information about your selected rental car and book it now.',
-  openGraph: {
-    title: 'Car Details | Rental Car',
-    description:
-      'View detailed information about your selected rental car and book it now.',
-    url: 'https://rental-car-pet-project.vercel.app',
-    images: [
-      {
-        url: '/images/og-image.jpg',
-        width: 640,
-        height: 640,
-        alt: 'Rental Car logo image',
-      },
-    ],
-  },
-};
 
 // типізація
 type Props = {
   params: Promise<{ carId: string }>;
 };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { carId } = await params;
+  const car = await fetchCarById(carId); // fetch мемоізується, не повториться
+
+  return {
+    title: `${car.brand} ${car.model}| Rental Car`,
+    description:
+      `${car.description}` ||
+      'View detailed information about your selected rental car and book it now.',
+    openGraph: {
+      title: `${car.brand} ${car.model}| Rental Car`,
+      description:
+        'View detailed information about your selected rental car and book it now.',
+      url: `https://rental-car-pet-project.vercel.app/catalog/${carId}`,
+      images: [
+        {
+          url: car.img || '/images/og-image.jpg',
+          width: 640,
+          height: 640,
+          alt: `${car.brand} ${car.model}`,
+        },
+      ],
+    },
+  };
+}
 
 const CarPage = async ({ params }: Props) => {
   const { carId } = await params;
